@@ -1,3 +1,11 @@
+const computerDisplay = document.getElementById('computer');
+const scoreDisplay = document.getElementById('score');
+const resultDisplay = document.getElementById('result');
+const playerDisplay = document.getElementById('player');
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
+const playerInput = document.getElementById('player-input');
 
 //array of choices
 let list = ["rock", "paper", "scissors"]
@@ -8,6 +16,20 @@ let getComputerChoice = () => {
     return list[x]
 }
 
+let getPlayerChoice;
+
+rockButton.addEventListener("click", () => {
+    getPlayerChoice = list[0];
+})
+
+paperButton.addEventListener("click", () => {
+    getPlayerChoice = list[1];
+})
+
+scissorsButton.addEventListener("click", () => {
+    getPlayerChoice = list[2];
+})
+
 /*player random choice
 let getPlayerChoice = () => {
     let x = Math.floor(Math.random() * 3)
@@ -15,10 +37,10 @@ let getPlayerChoice = () => {
 }*/
 
 //player manual choice
-let getPlayerChoice = () => {
-    playerPrompt = prompt("rock, paper, or scissors")
-    return playerPrompt
-}
+//let getPlayerChoice = () => {
+  //  playerPrompt = prompt("rock, paper, or scissors")
+    //return playerPrompt
+//}
 
 //initial score
 let computerScore = 0
@@ -26,23 +48,25 @@ let playerScore = 0
 
 //keep score and exit
 function scoreKeeper() {
-    console.log(`Computer: ${computerScore} Player: ${playerScore}`)
+    scoreDisplay.innerText = `Computer: ${computerScore} Player: ${playerScore}`
     if (computerScore == 5)  {
-        alert("Computer wins the series.");
+        scoreDisplay.innerText = "Computer wins the series."
         computerScore = 0;
         playerScore = 0;
 } else if (playerScore == 5) {
-        alert("Player wins the series.");
+        scoreDisplay.innerText = "Player wins the series.";
         computerScore = 0;
         playerScore = 0;
 }
     }
-
+if (playerInput) {
+    playerInput.addEventListener("click", game);
+}
 
 //selection comparison
 let game = (computerSelection, playerSelection) => {
     computerSelection = getComputerChoice();
-    playerSelection = getPlayerChoice();
+    playerSelection = getPlayerChoice;
         console.log(`Player chooses ${playerSelection} & Computer chooses ${computerSelection}`)
     if (computerSelection == playerSelection) {
         console.log("It's a tie! Try again.");
@@ -78,8 +102,8 @@ let game = (computerSelection, playerSelection) => {
 
 //run game * x
 
-setTimeout(() => {
-    for (i = 0; i <= 20; i++) {
-        game();
-    }
-}, 5000)
+//setTimeout(() => {
+  //  for (i = 0; i <= 20; i++) {
+    //    game();
+ //   }
+//}, 5000)
