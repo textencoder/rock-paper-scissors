@@ -1,5 +1,6 @@
 const computerDisplay = document.getElementById('computer');
 const scoreDisplay = document.getElementById('score');
+const choiceDisplay = document.getElementById('choice');
 const resultDisplay = document.getElementById('result');
 const playerDisplay = document.getElementById('player');
 const rockButton = document.getElementById('rock');
@@ -20,27 +21,21 @@ let getPlayerChoice;
 
 rockButton.addEventListener("click", () => {
     getPlayerChoice = list[0];
+    game();
+    scoreKeeper();
 })
 
 paperButton.addEventListener("click", () => {
     getPlayerChoice = list[1];
+    game();
+    scoreKeeper();
 })
 
 scissorsButton.addEventListener("click", () => {
     getPlayerChoice = list[2];
+    game();
+    scoreKeeper();
 })
-
-/*player random choice
-let getPlayerChoice = () => {
-    let x = Math.floor(Math.random() * 3)
-    return list[x]
-}*/
-
-//player manual choice
-//let getPlayerChoice = () => {
-  //  playerPrompt = prompt("rock, paper, or scissors")
-    //return playerPrompt
-//}
 
 //initial score
 let computerScore = 0
@@ -59,6 +54,7 @@ function scoreKeeper() {
         playerScore = 0;
 }
     }
+
 if (playerInput) {
     playerInput.addEventListener("click", game);
 }
@@ -67,43 +63,29 @@ if (playerInput) {
 let game = (computerSelection, playerSelection) => {
     computerSelection = getComputerChoice();
     playerSelection = getPlayerChoice;
-        console.log(`Player chooses ${playerSelection} & Computer chooses ${computerSelection}`)
+        computerDisplay.innerText =  `Computer chooses ${computerSelection}`;
+        choiceDisplay.innerText = `Player chooses ${playerSelection}`;
     if (computerSelection == playerSelection) {
-        console.log("It's a tie! Try again.");
-        scoreKeeper();
+        resultDisplay.innerText = "It's a tie! Try again.";       
     } else if (computerSelection == "rock" && playerSelection == "paper") {
         playerScore++;
-        console.log("Player Wins!");
-        scoreKeeper();
+        resultDisplay.innerText = "Player Wins!";      
     } else if (computerSelection == "paper" && playerSelection == "rock") {
         computerScore++;
-        console.log("Computer Wins!"); 
-        scoreKeeper();
+        resultDisplay.innerText = "Computer Wins!";        
     } else if (computerSelection == "scissors" && playerSelection == "paper") {
         computerScore++;
-        console.log("Computer Wins!");
-        scoreKeeper();
+        resultDisplay.innerText = "Computer Wins!";       
     } else if (computerSelection == "paper" && playerSelection == "scissors") {
         playerScore++;
-        console.log("Player Wins!");
-        scoreKeeper();
+        resultDisplay.innerText = "Player Wins!";       
     } else if (computerSelection == "rock" && playerSelection == "scissors") {
         computerScore++;
-        console.log("Computer Wins!");
-        scoreKeeper(); 
+        resultDisplay.innerText = "Computer Wins!";        
     } else if (computerSelection == "scissors" && playerSelection == "rock") {
         playerScore++;
-        console.log("Player Wins!");
-        scoreKeeper(); 
+        resultDisplay.innerText = "Player Wins!";  
     } else {
-        console.log("Error occurred.");
+        resultDisplay.innerText = "Error occurred. Try again.";
     }
 }
-
-//run game * x
-
-//setTimeout(() => {
-  //  for (i = 0; i <= 20; i++) {
-    //    game();
- //   }
-//}, 5000)
