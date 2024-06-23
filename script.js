@@ -7,6 +7,7 @@ const rockButton = document.getElementById('rock');
 const paperButton = document.getElementById('paper');
 const scissorsButton = document.getElementById('scissors');
 const playerInput = document.getElementById('player-input');
+const resetBtn = document.getElementById('reset-btn');
 
 //array of choices
 let list = ["rock", "paper", "scissors"]
@@ -48,15 +49,28 @@ function scoreKeeper() {
         scoreDisplay.innerText = "Computer wins the series."
         computerScore = 0;
         playerScore = 0;
+        playerDisplay.style.display = "none";
+        resetBtn.style.display = "block";
 } else if (playerScore == 5) {
         scoreDisplay.innerText = "Player wins the series.";
         computerScore = 0;
         playerScore = 0;
+        playerDisplay.style.display = "none";
+        resetBtn.style.display = "block";
 }
     }
 
 if (playerInput) {
     playerInput.addEventListener("click", game);
+}
+
+//reset game
+if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+        resetBtn.style.display = "none";
+        playerDisplay.style.display = "block";
+        scoreKeeper();
+    });
 }
 
 //selection comparison

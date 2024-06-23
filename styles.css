@@ -1,5 +1,7 @@
 html {
     overflow-y: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 #container {
@@ -7,4 +9,21 @@ html {
     grid-template-rows: repeat(5, 1fr);
     place-items: center;
     height: 100vh;
+}
+
+#reset-btn {
+    display: none;
+}
+
+button {
+    border: none;
+    background-color: blueviolet;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #1a2be2;
 }
