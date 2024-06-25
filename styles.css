@@ -27,3 +27,8 @@ button:hover {
     cursor: pointer;
     background-color: #1a2be2;
 }
+
+div {
+    font-size: 1.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
