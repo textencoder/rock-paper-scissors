@@ -10,28 +10,32 @@ const playerInput = document.getElementById('player-input');
 const resetBtn = document.getElementById('reset-btn');
 
 //array of choices
-let list = ["rock", "paper", "scissors"]
+let list = ["rock", "paper", "scissors"];
 
 //computer random choice
 let getComputerChoice = () => {
-    let x = Math.floor(Math.random() * 3)
-    return list[x]
+    let x = Math.floor(Math.random() * 3);
+    return list[x];
 }
 
+//player choice initialization
 let getPlayerChoice;
 
+//player chooses rock
 rockButton.addEventListener("click", () => {
     getPlayerChoice = list[0];
     game();
     scoreKeeper();
 })
 
+//player chooses paper
 paperButton.addEventListener("click", () => {
     getPlayerChoice = list[1];
     game();
     scoreKeeper();
 })
 
+//player chooses scissors
 scissorsButton.addEventListener("click", () => {
     getPlayerChoice = list[2];
     game();
@@ -39,8 +43,8 @@ scissorsButton.addEventListener("click", () => {
 })
 
 //initial score
-let computerScore = 0
-let playerScore = 0
+let computerScore = 0;
+let playerScore = 0;
 
 //keep score and exit
 function scoreKeeper() {
@@ -60,6 +64,7 @@ function scoreKeeper() {
 }
     }
 
+//allow page load before game start
 if (playerInput) {
     playerInput.addEventListener("click", game);
 }
@@ -69,6 +74,9 @@ if (resetBtn) {
     resetBtn.addEventListener("click", () => {
         resetBtn.style.display = "none";
         playerDisplay.style.display = "block";
+        resultDisplay.innerText = "Select your choice to begin the game.";
+        choiceDisplay.innerText = "";
+        computerDisplay.innerText = "";
         scoreKeeper();
     });
 }
