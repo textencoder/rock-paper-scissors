@@ -8,6 +8,8 @@ const paperButton = document.getElementById('paper');
 const scissorsButton = document.getElementById('scissors');
 const playerInput = document.getElementById('player-input');
 const resetBtn = document.getElementById('reset-btn');
+const playerScoreBoard = document.getElementById('player-score');
+const cpuScoreBoard = document.getElementById('computer-score');
 
 //array of choices
 let list = ["rock", "paper", "scissors"];
@@ -48,21 +50,23 @@ let playerScore = 0;
 
 //keep score and exit
 function scoreKeeper() {
-    scoreDisplay.innerText = `Computer: ${computerScore} Player: ${playerScore}`
+    //scoreDisplay.innerText = `Player ${playerScore} ${computerScore} Computer`
+    playerScoreBoard.innerText = playerScore;
+    cpuScoreBoard.innerText = computerScore;
     if (computerScore == 5)  {
-        scoreDisplay.innerText = "Computer wins the series."
+        resultDisplay.innerText = "Computer wins the series!"
         computerScore = 0;
         playerScore = 0;
         playerDisplay.style.display = "none";
         resetBtn.style.display = "block";
-} else if (playerScore == 5) {
-        scoreDisplay.innerText = "Player wins the series.";
+    } else if (playerScore == 5) {
+        resultDisplay.innerText = "Player wins the series!";
         computerScore = 0;
         playerScore = 0;
         playerDisplay.style.display = "none";
         resetBtn.style.display = "block";
-}
     }
+}
 
 //allow page load before game start
 if (playerInput) {
@@ -74,7 +78,7 @@ if (resetBtn) {
     resetBtn.addEventListener("click", () => {
         resetBtn.style.display = "none";
         playerDisplay.style.display = "block";
-        resultDisplay.innerText = "Select your choice to begin the game.";
+        resultDisplay.innerText = "Select your choice to begin the game";
         choiceDisplay.innerText = "";
         computerDisplay.innerText = "";
         scoreKeeper();
