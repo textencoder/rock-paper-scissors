@@ -89,8 +89,8 @@ if (resetBtn) {
 let game = (computerSelection, playerSelection) => {
     computerSelection = getComputerChoice();
     playerSelection = getPlayerChoice;
-        computerDisplay.innerText =  `Computer chooses ${computerSelection}`;
-        choiceDisplay.innerText = `Player chooses ${playerSelection}`;
+        computerDisplay.innerText =  `${computerSelection}`;
+        choiceDisplay.innerText = `${playerSelection}`;
     if (computerSelection == playerSelection) {
         resultDisplay.innerText = "It's a tie! Try again.";       
     } else if (computerSelection == "rock" && playerSelection == "paper") {

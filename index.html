@@ -8,22 +8,40 @@
 </head>
 <body>
     <div id="container">
-    <div id="score">
-        You <span id="score-focus">
-                <span id="player-score">0</span>
-                    -
-                <span id="computer-score">0</span> 
-            </span>    
-        CPU
-    </div>
+    
     <div id="result">
             Select your choice to begin the game
     </div>
-    <div id="computer">
+    <div id="computer-container" class="choice-container">
+        <div class="character-label">
+            <p>C</p>
+        <p>P</p>
+        <p>U</p>
         
     </div>
-    <div id="choice">
+    <div id="computer">
+
+    </div>
+    </div>
+    <div id="score">
+        <div class="win-alert">computer win</div>
+         <span id="score-focus">
+                <span id="player-score">0</span>
+                    VS
+                <span id="computer-score">0</span> 
+            </span>    
         
+        <div class="win-alert">player win</div>
+    </div>
+    <div id="choice-container" class="choice-container">
+        <div class="character-label">
+            <p>Y</p>
+        <p>O</p>
+        <p>U</p>  
+    </div>
+    <div id="choice">
+
+    </div>
     </div>
     <div id="player">
         <button id="rock" class="player-input">Rock</button>
