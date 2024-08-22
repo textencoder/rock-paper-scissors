@@ -11,6 +11,9 @@ const resetBtn = document.getElementById('reset-btn');
 const playerScoreBoard = document.getElementById('player-score');
 const cpuScoreBoard = document.getElementById('computer-score');
 
+const cpuWinAlert = document.getElementById('cpu-win-alert');
+const playerWinAlert = document.getElementById('player-win-alert');
+
 //array of choices
 let list = ["rock", "paper", "scissors"];
 
@@ -85,6 +88,10 @@ if (resetBtn) {
     });
 }
 
+//there must be a better way
+playerWinAlert.style.visibility = 'hidden';
+cpuWinAlert.style.visibility = 'hidden'; 
+
 //selection comparison
 let game = (computerSelection, playerSelection) => {
     computerSelection = getComputerChoice();
@@ -92,26 +99,34 @@ let game = (computerSelection, playerSelection) => {
         computerDisplay.innerText =  `${computerSelection}`;
         choiceDisplay.innerText = `${playerSelection}`;
     if (computerSelection == playerSelection) {
-        resultDisplay.innerText = "It's a tie! Try again.";       
+        playerWinAlert.style.visibility = 'hidden';
+        cpuWinAlert.style.visibility = 'hidden';        
     } else if (computerSelection == "rock" && playerSelection == "paper") {
         playerScore++;
-        resultDisplay.innerText = "Player Wins!";      
+        playerWinAlert.style.visibility = 'visible';
+        cpuWinAlert.style.visibility = 'hidden';    
     } else if (computerSelection == "paper" && playerSelection == "rock") {
         computerScore++;
-        resultDisplay.innerText = "Computer Wins!";        
+        playerWinAlert.style.visibility = 'hidden';
+        cpuWinAlert.style.visibility = 'visible';       
     } else if (computerSelection == "scissors" && playerSelection == "paper") {
         computerScore++;
-        resultDisplay.innerText = "Computer Wins!";       
+        playerWinAlert.style.visibility = 'hidden';
+        cpuWinAlert.style.visibility = 'visible';       
     } else if (computerSelection == "paper" && playerSelection == "scissors") {
         playerScore++;
-        resultDisplay.innerText = "Player Wins!";       
+        playerWinAlert.style.visibility = 'visible';
+        cpuWinAlert.style.visibility = 'hidden';        
     } else if (computerSelection == "rock" && playerSelection == "scissors") {
         computerScore++;
-        resultDisplay.innerText = "Computer Wins!";        
+        playerWinAlert.style.visibility = 'hidden';
+        cpuWinAlert.style.visibility = 'visible';        
     } else if (computerSelection == "scissors" && playerSelection == "rock") {
         playerScore++;
-        resultDisplay.innerText = "Player Wins!";  
+        playerWinAlert.style.visibility = 'visible';
+        cpuWinAlert.style.visibility = 'hidden';   
     } else {
-        resultDisplay.innerText = "Error occurred. Try again.";
+        console.log("Error occurred. Try again.");
     }
 }
+

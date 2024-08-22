@@ -49,6 +49,7 @@ div {
 
 #result {
     color: white;
+    visibility: hidden;
 }
 
 #score {
@@ -126,4 +127,17 @@ div {
 #player {
     
     width: 60%;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #container {
+        width: 60%;
+    }
 }
