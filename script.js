@@ -57,13 +57,13 @@ function scoreKeeper() {
     playerScoreBoard.innerText = playerScore;
     cpuScoreBoard.innerText = computerScore;
     if (computerScore == 5)  {
-        resultDisplay.innerText = "Computer wins the series!"
+        //resultDisplay.innerText = "Computer wins the series!"
         computerScore = 0;
         playerScore = 0;
         playerDisplay.style.display = "none";
         resetBtn.style.display = "block";
     } else if (playerScore == 5) {
-        resultDisplay.innerText = "Player wins the series!";
+        //resultDisplay.innerText = "Player wins the series!";
         computerScore = 0;
         playerScore = 0;
         playerDisplay.style.display = "none";
@@ -81,7 +81,7 @@ if (resetBtn) {
     resetBtn.addEventListener("click", () => {
         resetBtn.style.display = "none";
         playerDisplay.style.display = "block";
-        resultDisplay.innerText = "Select your choice to begin the game";
+        //resultDisplay.innerText = "Select your choice to begin the game";
         choiceDisplay.innerText = "";
         computerDisplay.innerText = "";
         scoreKeeper();
