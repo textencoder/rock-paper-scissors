@@ -85,12 +85,28 @@ if (resetBtn) {
         choiceDisplay.innerText = "";
         computerDisplay.innerText = "";
         scoreKeeper();
+        tieGame();
     });
 }
 
 //there must be a better way
 playerWinAlert.style.visibility = 'hidden';
-cpuWinAlert.style.visibility = 'hidden'; 
+cpuWinAlert.style.visibility = 'hidden';
+
+const tieGame = function() {
+    playerWinAlert.style.visibility = 'hidden';
+    cpuWinAlert.style.visibility = 'hidden';
+}
+
+const playerWin = function() {
+    playerWinAlert.style.visibility = 'visible';
+    cpuWinAlert.style.visibility = 'hidden';
+}
+
+const cpuWin = function() {
+    playerWinAlert.style.visibility = 'hidden';
+    cpuWinAlert.style.visibility = 'visible';
+}
 
 //selection comparison
 let game = (computerSelection, playerSelection) => {
@@ -99,32 +115,25 @@ let game = (computerSelection, playerSelection) => {
         computerDisplay.innerText =  `${computerSelection}`;
         choiceDisplay.innerText = `${playerSelection}`;
     if (computerSelection == playerSelection) {
-        playerWinAlert.style.visibility = 'hidden';
-        cpuWinAlert.style.visibility = 'hidden';        
+        tieGame();        
     } else if (computerSelection == "rock" && playerSelection == "paper") {
         playerScore++;
-        playerWinAlert.style.visibility = 'visible';
-        cpuWinAlert.style.visibility = 'hidden';    
+        playerWin();   
     } else if (computerSelection == "paper" && playerSelection == "rock") {
         computerScore++;
-        playerWinAlert.style.visibility = 'hidden';
-        cpuWinAlert.style.visibility = 'visible';       
+        cpuWin();      
     } else if (computerSelection == "scissors" && playerSelection == "paper") {
         computerScore++;
-        playerWinAlert.style.visibility = 'hidden';
-        cpuWinAlert.style.visibility = 'visible';       
+        cpuWin();       
     } else if (computerSelection == "paper" && playerSelection == "scissors") {
         playerScore++;
-        playerWinAlert.style.visibility = 'visible';
-        cpuWinAlert.style.visibility = 'hidden';        
+        playerWin();         
     } else if (computerSelection == "rock" && playerSelection == "scissors") {
         computerScore++;
-        playerWinAlert.style.visibility = 'hidden';
-        cpuWinAlert.style.visibility = 'visible';        
+        cpuWin();        
     } else if (computerSelection == "scissors" && playerSelection == "rock") {
         playerScore++;
-        playerWinAlert.style.visibility = 'visible';
-        cpuWinAlert.style.visibility = 'hidden';   
+        playerWin();     
     } else {
         console.log("Error occurred. Try again.");
     }
